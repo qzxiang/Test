@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	h1 {color:#cc0000;}
+	.button {margin-bottom: 20px;}
+	.button button {margin-right:5px;}
+	#box { width: 200px; height:100px;background: #ccc;border: 1px solid #000}
+	#table { width: 200px; height:100px;background: #cc0000;border: 1px solid #000}
+	#chair { width: 200px; height:100px;background: #cccc00;border: 1px solid #000}
+	#floor { width: 200px; height:100px;background: #cccccc;border: 1px solid #000}
+	#plane { width: 200px; height:100px;background: #98bf21;border: 1px solid #000;position:absolute}
+	</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function() {
+		$("#box").fadeToggle(1000);
+	});
+	$("#dbbtn").dblclick(function() {
+		$("#table").fadeToggle(1000);
+	});
+	$("#mouseon").mouseenter(function() {
+		$("#chair").fadeOut(1000);
+	});
+	$("#mouseon").mouseleave(function() {
+		$("#chair").fadeIn(1000);
+	});
+	$("#mousedown").mousedown(function() {
+		$("#floor").fadeTo('400', 0.05);
+	});
+	$("#mousedown").mouseleave(function() {
+		$("#floor").fadeTo('400', 0.95);
+	});
+	$("input").focus(function() {
+		$(this).css('background-color', '#cccccc');
+	});
+	$("input").blur(function() {
+		$(this).css('background-color', '#ffffff');
+	});
+	$("#animate").click(function() {
+		var plane = $("#plane");
+	 plane.animate({
+			left:'800px',
+			opacity:'0.5'
+	  	},1000)
+	 .animate({
+			left:'8px',
+			opacity:'1'
+	  	},2000);
+	});
+  });
+</script>
+</head>
+<body>
+<div class="button">
+<h1>测试一下按键的功能</h1>
+<button id="btn">单击显示/隐藏</button>
+<button id="dbbtn">双击显示/隐藏</button>
+<button id="mouseon">鼠标悬浮</button>
+<button id="mousedown">鼠标点击</button>
+<button id="animate">鼠标滑动</button>
+</div>
+<div id="box">盒子<br><input id="inbox" type="text"></div>
+<div id="table">桌子</div>
+<div id="chair">椅子</div>
+<div id="floor">地板</div>
+<div id="plane">飞机</div>
+</body>
+</html>
