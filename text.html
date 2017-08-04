@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="vue.js"></script>
+	<script>
+		window.onload = function(){
+			var vm = new Vue({
+				el:'#box',
+				data(){
+					return {
+						msg:'welcome vue',
+						msg2: 12 ,
+						msg3:true,
+						arr:['apple','banana','pear'],
+				 		arr2: [
+						 		 { message: 'Foo' },
+						 		 { message: 'Bar' } 
+				 		  		],
+						json:{
+							a:'red',
+							b:'yellow',
+							c:'green'
+						},
+						name:{
+							firstname:'zhang',
+							lastname:'san',
+							fullname:'zhangsan'
+						}
+						
+					}
+				},
+				computed: {
+			    	b: function () {
+			    		return this.msg2 + 1
+			    	},
+			    	newfullname:function(){
+			  			return this.newfullname = this.name.firstname + this.name.lastname
+			  		}
+			  	},
+			  	watch:{
+			  		name:{
+			  			handler:(val,oldval)=>{
+			  				// console.log(val.firstname) 
+                		},
+            			deep:true
+			  		},
+			  		'name.firstname':function(val){
+			  			this.name.fullname = val + '' + this.name.lastname
+			  		},
+			  		'name.lastname':function(val){
+			  			this.name.fullname = this.name.firstname + '' + val
+			  		}
+			  	}
+			});
+		};
+	</script>
+</head>
+<body>
+	<div id="box">
+		{{msg}} 
+	<input type="text" v-model="msg">
+	<br>
+	{{msg2}} {{b}}
+	<br>
+	{{msg3}}
+	<br>
+	{{arr}}
+	<br>
+	{{json}}
+	<ul>
+		<li v-for="(item,index) in arr">{{item}} {{index}}</li>
+	</ul>
+	<hr>
+	<ul>
+		<li v-for="(item,index) in arr2">{{item.message}} {{index}}</li>
+	</ul>
+	<ul>
+		<li v-for="(value,key,index) in json">{{key}} {{value}} {{index}}</li>
+	</ul>
+	<hr>
+	<span>firstname:</span><input type="text" v-model="name.firstname">
+	<span>lastname:</span><input type="text" v-model="name.lastname">
+	<p>fullname:{{name.fullname}}</p>
+	<p>newfullname:{{newfullname}}</p>
+</body>
+</html>
