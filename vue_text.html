@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue_test</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="firstName"/>
+		<span>+</span>
+		<input type="text" v-model="lastName"/>
+		<span>=</span>
+		<p v-if="fullName">{{fullName}}</p>
+		<hr>
+		<button @click="counter += 1">增加1</button>
+		<span>这个按钮被点击了{{counter}}次</span>
+		<hr>
+		<button @click="show1">test</button>
+	</div>
+</body>
+<script src="https://unpkg.com/vue"></script>
+<script>
+    var vm = new Vue({
+		  el: '#app',
+		  data: {
+		    firstName: '',
+		    lastName: '',
+		    counter: 0
+		  },
+		  computed: {
+		    fullName: function () {
+		      return parseInt(this.firstName) + parseInt(this.lastName)
+		    }
+		  },
+		  methods: {
+		  	show1: function() {
+		  		alert("已点击了" + this.counter + "次")
+		  	}
+		  }
+		})
+</script>
+</html>
