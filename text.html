@@ -16,7 +16,7 @@
 						arr:['apple','banana','pear'],
 				 		arr2: [
 						 		 { message: 'Foo' },
-						 		 { message: 'Bar' } 
+						 		 { message: 'Bar' }
 				 		  		],
 						json:{
 							a:'red',
@@ -28,7 +28,7 @@
 							lastname:'san',
 							fullname:'zhangsan'
 						}
-						
+
 					}
 				},
 				computed: {
@@ -42,7 +42,7 @@
 			  	watch:{
 			  		name:{
 			  			handler:(val,oldval)=>{
-			  				// console.log(val.firstname) 
+			  				// console.log(val.firstname)
                 		},
             			deep:true
 			  		},
@@ -59,7 +59,7 @@
 </head>
 <body>
 	<div id="box">
-		{{msg}} 
+		{{msg}}
 	<input type="text" v-model="msg">
 	<br>
 	{{msg2}} {{b}}
@@ -84,5 +84,6 @@
 	<span>lastname:</span><input type="text" v-model="name.lastname">
 	<p>fullname:{{name.fullname}}</p>
 	<p>newfullname:{{newfullname}}</p>
+  <p></p>
 </body>
 </html>
